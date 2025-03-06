@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 // Définir le type Word
 type Word = {
@@ -9,70 +10,71 @@ type Word = {
   image: string;
 };
 
-export default function Home() {
-  const [words, setWords] = useState([
-    { 
-      text: "cat", 
-      lang: "en-US",
-      image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80"
-    },
-    { 
-      text: "dog", 
-      lang: "en-US",
-      image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80"
-    },
-    { 
-      text: "chair", 
-      lang: "en-US",
-      image: "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80"
-    },
-    { 
-      text: "table", 
-      lang: "en-US",
-      image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80"
-    },
-    { 
-      text: "book", 
-      lang: "en-US",
-      image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80"
-    },
-    { 
-      text: "elephant", 
-      lang: "en-US",
-      image: "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80"
-    },
-    { 
-      text: "pencil", 
-      lang: "en-US",
-      image: "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80"
-    },
-    { 
-      text: "bird", 
-      lang: "en-US",
-      image: "https://images.unsplash.com/photo-1522926193341-e9ffd686c60f?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80"
-    },
-    { 
-      text: "phone", 
-      lang: "en-US",
-      image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80"
-    },
-    { 
-      text: "fish", 
-      lang: "en-US",
-      image: "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80"
-    },
-    { 
-      text: "car", 
-      lang: "en-US",
-      image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80"
-    },
-    { 
-      text: "bicycle", 
-      lang: "en-US",
-      image: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80"
-    }
-  ]);
+// Liste fixe de mots
+const WORDS_DATA: Word[] = [
+  { 
+    text: "cat", 
+    lang: "en-US",
+    image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70"
+  },
+  { 
+    text: "dog", 
+    lang: "en-US",
+    image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70"
+  },
+  { 
+    text: "chair", 
+    lang: "en-US",
+    image: "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70"
+  },
+  { 
+    text: "table", 
+    lang: "en-US",
+    image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70"
+  },
+  { 
+    text: "book", 
+    lang: "en-US",
+    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70"
+  },
+  { 
+    text: "elephant", 
+    lang: "en-US",
+    image: "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70"
+  },
+  { 
+    text: "pencil", 
+    lang: "en-US",
+    image: "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70"
+  },
+  { 
+    text: "bird", 
+    lang: "en-US",
+    image: "https://images.unsplash.com/photo-1522926193341-e9ffd686c60f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70"
+  },
+  { 
+    text: "phone", 
+    lang: "en-US",
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70"
+  },
+  { 
+    text: "fish", 
+    lang: "en-US",
+    image: "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70"
+  },
+  { 
+    text: "car", 
+    lang: "en-US",
+    image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70"
+  },
+  { 
+    text: "bicycle", 
+    lang: "en-US",
+    image: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70"
+  }
+];
 
+export default function Home() {
   const [activeWord, setActiveWord] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredWords, setFilteredWords] = useState<Word[]>([]);
@@ -82,19 +84,19 @@ export default function Home() {
   // Set initial state after component mounts
   useEffect(() => {
     setIsMounted(true);
-    setFilteredWords(words);
+    setFilteredWords(WORDS_DATA);
     setIsSpeechSynthesisSupported(typeof window !== 'undefined' && 'speechSynthesis' in window);
-  }, [words]);
+  }, []);
 
   // Filter words based on search term
   useEffect(() => {
     if (isMounted) {
-      const results = words.filter(word => 
+      const results = WORDS_DATA.filter(word => 
         word.text.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredWords(results);
     }
-  }, [searchTerm, words, isMounted]);
+  }, [searchTerm, isMounted]);
 
   const speakWord = (word: string, lang: string, index: number) => {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
@@ -166,15 +168,18 @@ export default function Home() {
               <div 
                 key={index}
                 onClick={() => speakWord(word.text, word.lang, index)}
-                className={`bg-white rounded-lg shadow-md overflow-hidden transition-all transform hover:scale-105 cursor-pointer ${activeWord === words.indexOf(word) ? 'ring-2 ring-indigo-500' : ''}`}
+                className={`bg-white rounded-lg shadow-md overflow-hidden transition-all transform hover:scale-105 cursor-pointer ${activeWord === WORDS_DATA.indexOf(word) ? 'ring-2 ring-indigo-500' : ''}`}
               >
                 <div className="h-48 overflow-hidden relative">
-                  <img 
+                  <Image 
                     src={word.image} 
                     alt={word.text}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                    fill
+                    priority={index === 0}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-300 hover:scale-110"
                   />
-                  <div className={`absolute bottom-3 right-3 bg-indigo-500 rounded-full p-2 text-white ${activeWord === words.indexOf(word) ? 'animate-pulse' : ''}`}>
+                  <div className={`absolute bottom-3 right-3 bg-indigo-500 rounded-full p-2 text-white ${activeWord === WORDS_DATA.indexOf(word) ? 'animate-pulse' : ''}`}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                     </svg>
