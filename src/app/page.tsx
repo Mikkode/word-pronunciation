@@ -102,7 +102,21 @@ export default function Home() {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       setActiveWord(index);
       const utterance = new SpeechSynthesisUtterance(word);
-      utterance.lang = lang;
+      
+      // Forcer la langue anglaise
+      utterance.lang = "en-US";
+      
+      // Essayer de sélectionner une voix anglaise native
+      const voices = window.speechSynthesis.getVoices();
+      const englishVoices = voices.filter(voice => 
+        voice.lang.includes('en-') && !voice.lang.includes('en-ZA')
+      );
+      
+      if (englishVoices.length > 0) {
+        // Utiliser la première voix anglaise disponible
+        utterance.voice = englishVoices[0];
+      }
+      
       utterance.onend = () => setActiveWord(null);
       window.speechSynthesis.speak(utterance);
     }
