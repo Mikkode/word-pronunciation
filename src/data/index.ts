@@ -246,8 +246,15 @@ export const words: Word[] = [
 
 // Fonction pour obtenir les mots par catégorie
 export function getWordsByCategory(categoryId: string): Word[] {
+  console.log("Recherche de mots pour la catégorie:", categoryId);
+  console.log("Nombre total de mots:", words.length);
+  
   if (categoryId === 'all') return words;
-  return words.filter(word => word.category === categoryId);
+  
+  const filteredWords = words.filter(word => word.category === categoryId);
+  console.log("Mots filtrés:", filteredWords.length);
+  
+  return filteredWords;
 }
 
 // Fonction pour obtenir un mot par ID

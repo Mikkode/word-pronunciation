@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { categories, words } from '@/data';
 import { Word } from '@/types';
-import { motion } from 'framer-motion';
+import FlashCard, { FlashCardMode } from '@/components/FlashCard';
+import VoiceSelector from '@/components/VoiceSelector';
+import SizeSlider from '@/components/SizeSlider';
 
 export default function Home() {
   const [activeWord, setActiveWord] = useState<string | null>(null);
@@ -12,6 +13,9 @@ export default function Home() {
   const [filteredWords, setFilteredWords] = useState<Word[]>([]);
   const [isMounted, setIsMounted] = useState(false);
   const [isSpeechSynthesisSupported, setIsSpeechSynthesisSupported] = useState(false);
+  const [cardMode, setCardMode] = useState<FlashCardMode>('image-to-sound');
+  const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
+  const [gridColumns, setGridColumns] = useState(3); // Valeur par défaut: 3 colonnes
 
   // Set initial state after component mounts
   useEffect(() => {
@@ -35,6 +39,33 @@ export default function Home() {
     }
   }, [searchTerm, isMounted]);
 
+  // Fonction pour gérer le changement du nombre de colonnes
+  const handleGridChange = (value: number) => {
+    // Convertir la valeur du slider (1-3) en nombre de colonnes (1-5)
+    const columns = Math.round(value * 2);
+    setGridColumns(columns);
+  };
+
+  // Générer la classe CSS pour la grille en fonction du nombre de colonnes
+  const getGridClass = () => {
+    const baseClass = "grid gap-6 ";
+    
+    switch(gridColumns) {
+      case 1:
+        return baseClass + "grid-cols-1";
+      case 2:
+        return baseClass + "grid-cols-1 sm:grid-cols-2";
+      case 3:
+        return baseClass + "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+      case 4:
+        return baseClass + "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4";
+      case 5:
+        return baseClass + "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5";
+      default:
+        return baseClass + "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+    }
+  };
+
   const speakWord = (word: string, lang: string, id: string) => {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       setActiveWord(id);
@@ -43,15 +74,19 @@ export default function Home() {
       // Forcer la langue anglaise
       utterance.lang = "en-US";
       
-      // Essayer de sélectionner une voix anglaise native
-      const voices = window.speechSynthesis.getVoices();
-      const englishVoices = voices.filter(voice => 
-        voice.lang.includes('en-') && !voice.lang.includes('en-ZA')
-      );
-      
-      if (englishVoices.length > 0) {
-        // Utiliser la première voix anglaise disponible
-        utterance.voice = englishVoices[0];
+      // Utiliser la voix sélectionnée si disponible
+      if (selectedVoice) {
+        utterance.voice = selectedVoice;
+      } else {
+        // Fallback: essayer de sélectionner une voix anglaise native
+        const voices = window.speechSynthesis.getVoices();
+        const englishVoices = voices.filter(voice => 
+          voice.lang.includes('en-') && !voice.lang.includes('en-ZA')
+        );
+        
+        if (englishVoices.length > 0) {
+          utterance.voice = englishVoices[0];
+        }
       }
       
       utterance.onend = () => setActiveWord(null);
@@ -66,8 +101,47 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-100"> 
-      <div className="max-w-4xl mx-auto py-8 px-4">
+      <div className="max-w-6xl mx-auto py-8 px-4">
         <header className="text-center mb-12">
+          {/* Mode selector */}
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex rounded-md shadow-sm" role="group">
+              <button
+                type="button"
+                onClick={() => setCardMode('image-to-sound')}
+                className={`px-4 py-2 text-sm font-medium rounded-l-lg ${
+                  cardMode === 'image-to-sound' 
+                    ? 'bg-indigo-600 text-white' 
+                    : 'bg-white text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                Image → Sound
+              </button>
+              <button
+                type="button"
+                onClick={() => setCardMode('image-to-text')}
+                className={`px-4 py-2 text-sm font-medium ${
+                  cardMode === 'image-to-text' 
+                    ? 'bg-indigo-600 text-white' 
+                    : 'bg-white text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                Image → Text
+              </button>
+              <button
+                type="button"
+                onClick={() => setCardMode('text-to-image')}
+                className={`px-4 py-2 text-sm font-medium rounded-r-lg ${
+                  cardMode === 'text-to-image' 
+                    ? 'bg-indigo-600 text-white' 
+                    : 'bg-white text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                Text → Image
+              </button>
+            </div>
+          </div>
+          
           {/* Modern Search Bar */}
           <div className="relative max-w-md mx-auto mt-8">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -93,9 +167,34 @@ export default function Home() {
               </button>
             )}
           </div>
+          
+          {/* Sélecteur de voix */}
+          {cardMode === 'image-to-sound' && (
+            <div className="max-w-xs mx-auto mt-4">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Select English Voice
+              </label>
+              <VoiceSelector 
+                onVoiceChange={setSelectedVoice}
+                selectedVoice={selectedVoice}
+              />
+            </div>
+          )}
+
+          {/* Slider pour ajuster le nombre de colonnes */}
+          <div className="mt-4 mb-6">
+            <p className="text-sm text-gray-600 mb-2 text-center">Ajuster le nombre de cartes par ligne</p>
+            <SizeSlider 
+              value={gridColumns / 2}
+              onChange={handleGridChange}
+              min={0.5}
+              max={2.5}
+              step={0.5}
+            />
+          </div>
         </header>
         
-        {!isSpeechSynthesisSupported && (
+        {!isSpeechSynthesisSupported && cardMode === 'image-to-sound' && (
           <div className="p-4 bg-red-100 border-l-4 border-red-500 text-red-700 rounded-md mb-6">
             <p className="font-medium">Warning</p>
             <p>Your browser does not support speech synthesis.</p>
@@ -107,37 +206,23 @@ export default function Home() {
             <p className="text-gray-500">No words match your search.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredWords.map((word, index) => (
-              <motion.div 
+          <div className={getGridClass()}>
+            {filteredWords.map((word) => (
+              <FlashCard
                 key={word.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                whileHover={{ scale: 1.03, y: -5 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => speakWord(word.text, word.lang, word.id)}
-                className={`bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transition-all duration-300 ${activeWord === word.id ? 'ring-2 ring-indigo-500' : 'hover:shadow-xl'}`}
-              >
-                <div className="h-48 overflow-hidden relative">
-                  <Image 
-                    src={word.image}
-                    alt={word.text}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority={index === 0}
-                    className="object-cover transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className={`absolute bottom-3 right-3 bg-indigo-600 rounded-full p-2 text-white shadow-md ${activeWord === word.id ? 'animate-pulse' : ''}`}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                    </svg>
-                  </div>
-                  <div className="absolute top-3 left-3 bg-white/80 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-indigo-800 shadow-sm">
-                    {categories.find(cat => cat.id === word.category)?.name}
-                  </div>
-                </div>
-              </motion.div>
+                id={word.id}
+                text={word.text}
+                image={word.image}
+                category={categories.find(cat => cat.id === word.category)?.name}
+                mode={cardMode}
+                onCardClick={() => {
+                  if (cardMode === 'image-to-sound') {
+                    speakWord(word.text, word.lang, word.id);
+                  }
+                }}
+                isActive={activeWord === word.id}
+                gridColumns={gridColumns}
+              />
             ))}
           </div>
         )}
@@ -146,7 +231,9 @@ export default function Home() {
           <div className="bg-indigo-50 rounded-xl p-6 max-w-2xl mx-auto shadow-sm">
             <h3 className="text-lg font-semibold text-indigo-700 mb-2">How to use</h3>
             <p className="text-gray-600">
-              Simply tap on any card to hear perfect native pronunciation.
+              {cardMode === 'image-to-sound' && 'Tap any card to hear perfect native pronunciation.'}
+              {cardMode === 'image-to-text' && 'Tap any card to reveal the word.'}
+              {cardMode === 'text-to-image' && 'Tap any text to see the corresponding image.'}
               <br />
               Practice by listening and repeating to improve your English skills.
             </p>
