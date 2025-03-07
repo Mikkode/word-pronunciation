@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Image from "next/image";
-import { kgHappy } from "@/lib/fonts";
 import DotAnimation from "@/components/DotAnimation";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${kgHappy.variable}`}>
+    // <html lang="en" className={`${kgHappy.variable}`}>
+    <html lang="en">
       <body
         className={`${inter.className} bg-[#56ebff]/30 min-h-screen relative`}
       >

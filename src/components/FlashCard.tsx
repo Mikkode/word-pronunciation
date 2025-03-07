@@ -94,7 +94,7 @@ export default function FlashCard({
           }}
         >
           <div className="flex items-center justify-center h-full p-4">
-            <h2 className="text-2xl font-bold text-indigo-800 text-center">
+            <h2 className="text-2xl font-bold text-indigo-800 text-center ">
               {text}
             </h2>
           </div>

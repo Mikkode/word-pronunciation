@@ -124,14 +124,67 @@
   body {
     @apply bg-background text-foreground;
   }
+  @font-face {
+    font-family: "KGHappy";
+    src: url("/fonts/KGHAPPY.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "KGHappyShadows";
+    src: url("/fonts/KGHAPPYShadows.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "KGHappySolid";
+    src: url("/fonts/KGHAPPYSolid.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "KGRedHands";
+    src: url("/fonts/KGRedHands.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "KGRedHandsOutline";
+    src: url("/fonts/KGRedHandsOutline.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 }
 
-@font-face {
-  font-family: "kg-happy";
-  font-style: normal;
-  font-weight: 200 700;
-  font-display: swap;
-  src: url("/fonts/KGHAPPY.ttf") format("ttf");
+@layer utilities {
+  .font-kg-happy {
+    font-family: "KGHappy";
+  }
+
+  .font-kg-happy-shadows {
+    font-family: "KGHappyShadows";
+  }
+
+  .font-kg-happy-solid {
+    font-family: "KGHappySolid";
+  }
+
+  .font-kg-red-hands {
+    font-family: "KGRedHands";
+  }
+
+  .font-kg-red-hands-outline {
+    font-family: "KGRedHandsOutline";
+  }
 }
 
 .perspective-1000 {

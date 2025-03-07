@@ -1,7 +1,5 @@
 "use client";
 
-import { kgHappy } from "@/lib/fonts";
-
 type ColorfulTextProps = {
   text: string;
   className?: string;
@@ -14,10 +12,8 @@ export default function ColorfulText({
 }: ColorfulTextProps) {
   const colors = ["#ff56ac", "#ffa726", "#ffeb3b", "#56ebff", "#a057ff"];
 
-  const fontClass = "font-kg-happy";
-
   return (
-    <div className={`${className} ${kgHappy.variable} ${fontClass}`}>
+    <div className={`${className} font-kg-red-hands`}>
       {text.split("").map((letter, index) => (
         <span
           key={index}

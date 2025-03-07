@@ -20,7 +20,7 @@ export default function Navigation() {
   const colors = ["#ff56ac", "#56ebff", "#a057ff", "#ffa726"];
 
   return (
-    <nav className="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
+    <nav className="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50 font-kg-red-hands">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center py-3">
           <div className="flex items-center">

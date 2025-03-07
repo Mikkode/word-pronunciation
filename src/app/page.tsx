@@ -10,7 +10,7 @@ export default function Home() {
         className="text-6xl font-extrabold mb-8 text-center"
       />
 
-      <Content>
+      <Content className="font-kg-red-hands">
         <h2 className="text-3xl font-semibold text-[#ff56ac] mb-4 text-center">
           Empowering Early Readers, Unlocking Infinite Possibilities through
           Phonics
@@ -20,23 +20,23 @@ export default function Home() {
         </p>
 
         <ul className="text-lg text-gray-800 space-y-4 list-disc pl-6">
-          <li className="font-kg-happy">
+          <li>
             Paper Rings ensures a seamless learning experience by bringing
             engaging classroom phonics strategies to home.
           </li>
 
-          <li className="font-kg-happy">
+          <li>
             Designed by a preschool teacher, it helps parents reinforce phonics
             skills through fun, interactive features for steady progress.
           </li>
 
-          <li className="font-kg-happy">
+          <li>
             Together, let&#39;s create a strong foundation for your child&apos;s
             reading journey.
           </li>
         </ul>
 
-        <p className="text-lg text-gray-800 mt-6 mb-6 font-kg-happy pt-1 text-center font-bold">
+        <p className="text-lg text-gray-800 mt-6 mb-6 pt-1 text-center font-bold">
           Thank you for being a part of the Paper Rings family!
         </p>
 

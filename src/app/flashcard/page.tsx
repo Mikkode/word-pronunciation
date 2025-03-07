@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import ColorfulText from "@/components/ColorfulText";
 import { categories } from "@/data";
+import Content from "@/components/Content";
 
 export default function FlashcardPage() {
   const router = useRouter();
@@ -19,8 +20,8 @@ export default function FlashcardPage() {
         className="text-4xl md:text-5xl font-extrabold mb-6 md:mb-8 text-center"
       />
 
-      <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-md p-6 md:p-8 mb-6 md:mb-8 border-4 border-[#ff56ac]">
-        <h2 className="text-2xl md:text-3xl font-semibold text-[#a057ff] mb-4 md:mb-6">
+      <Content className="font-kg-red-hands">
+        <h2 className="text-2xl md:text-3xl  text-[#a057ff] mb-4 md:mb-6">
           Choose a category
         </h2>
 
@@ -45,7 +46,7 @@ export default function FlashcardPage() {
             </button>
           ))}
         </div>
-      </div>
+      </Content>
     </div>
   );
 }
