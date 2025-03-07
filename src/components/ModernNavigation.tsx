@@ -42,9 +42,9 @@ export default function ModernNavigation({ categories }: ModernNavigationProps) 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-4 lg:space-x-6 mx-6">
           <Link
-            href="/"
+            href="/falshcard"
             className={`text-sm font-medium transition-colors hover:text-primary ${
-              pathname === '/' ? 'text-indigo-600' : 'text-muted-foreground'
+              pathname === '/falshcard' ? 'text-indigo-600' : 'text-muted-foreground'
             }`}
           >
             All Words

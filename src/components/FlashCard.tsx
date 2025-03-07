@@ -105,6 +105,7 @@ export default function FlashCard({
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover"
+              style={{ objectFit: 'cover' }}
             />
           </div>
         </motion.div>
@@ -132,6 +133,8 @@ export default function FlashCard({
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"
+            style={{ objectFit: 'cover' }}
+            priority
           />
           {mode === 'image-to-sound' && (
             <div className={`absolute bottom-3 right-3 bg-indigo-600 rounded-full p-2 text-white shadow-md ${isActive ? 'animate-pulse' : ''}`}>

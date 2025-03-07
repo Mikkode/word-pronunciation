@@ -3,135 +3,104 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Category } from '@/types';
+import Image from 'next/image';
+import ColorfulText from './ColorfulText';
 
-type NavigationProps = {
-  categories: Category[];
-};
-
-export default function Navigation({ categories }: NavigationProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
+  const menuItems = [
+    { name: 'Home', path: '/' },
+    { name: 'Cards', path: '/flashcard' },
+    { name: 'Categories', path: '/category' },
+    { name: 'Games', path: '/games' },
+  ];
+
+  const colors = ['#ff56ac', '#56ebff', '#a057ff', '#ffa726'];
+
   return (
-    <nav className="bg-indigo-600 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav className="py-3 px-6 backdrop-blur-md bg-white/70 shadow-md">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-              </svg>
-              <span className="font-bold text-xl">WordSpeak</span>
+            <Link href="/" className="flex items-center">
+              {/* <Image 
+                src="/IMG_1163.jpg" 
+                alt="Kids Logo" 
+                width={120} 
+                height={50} 
+                className="mr-2"
+              /> */}
+              <div className="ml-2 hidden sm:block">
+                <ColorfulText text="WordNest" className="text-3xl font-extrabold" />
+              </div>
             </Link>
           </div>
-          
-          {/* Desktop menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex space-x-1">
+            {menuItems.map((item, index) => (
               <Link 
-                href="/" 
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  pathname === '/' ? 'bg-indigo-700 text-white' : 'text-indigo-100 hover:bg-indigo-500'
-                }`}
+                key={index} 
+                href={item.path}
+                className="relative px-5 py-2 font-bold text-white rounded-full overflow-hidden group border-2 border-black"
               >
-                All Words
+                <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12" 
+                      style={{ backgroundColor: colors[index % colors.length] }}></span>
+                <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-black opacity-0 group-hover:opacity-20"></span>
+                <span className="relative" style={{ 
+                  textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+                }}>
+                  {item.name}
+                </span>
               </Link>
-              
-              {categories.map((category) => (
-                <Link
-                  key={category.id}
-                  href={`/category/${category.id}`}
-                  className={`px-3 py-2 rounded-md text-sm font-medium ${
-                    pathname === `/category/${category.id}` ? 'bg-indigo-700 text-white' : 'text-indigo-100 hover:bg-indigo-500'
-                  }`}
-                >
-                  <span className="flex items-center">
-                    <span dangerouslySetInnerHTML={{ __html: category.icon }} className="mr-2 h-5 w-5" />
-                    {category.name}
-                  </span>
-                </Link>
-              ))}
-              
-              <Link 
-                href="/admin" 
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  pathname === '/admin' ? 'bg-indigo-700 text-white' : 'text-indigo-100 hover:bg-indigo-500'
-                }`}
-              >
-                Admin
-              </Link>
-            </div>
+            ))}
           </div>
-          
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-indigo-100 hover:text-white hover:bg-indigo-500 focus:outline-none"
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-full bg-[#ff56ac] text-white border-2 border-black"
             >
-              <svg
-                className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              <svg
-                className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {isOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
               </svg>
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile menu */}
-      <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <Link
-            href="/"
-            className={`block px-3 py-2 rounded-md text-base font-medium ${
-              pathname === '/' ? 'bg-indigo-700 text-white' : 'text-indigo-100 hover:bg-indigo-500'
-            }`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            All Words
-          </Link>
-          
-          {categories.map((category) => (
-            <Link
-              key={category.id}
-              href={`/category/${category.id}`}
-              className={`block px-3 py-2 rounded-md text-base font-medium ${
-                pathname === `/category/${category.id}` ? 'bg-indigo-700 text-white' : 'text-indigo-100 hover:bg-indigo-500'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <span className="flex items-center">
-                <span dangerouslySetInnerHTML={{ __html: category.icon }} className="mr-2 h-5 w-5" />
-                {category.name}
-              </span>
-            </Link>
-          ))}
-          
-          <Link
-            href="/admin"
-            className={`block px-3 py-2 rounded-md text-base font-medium ${
-              pathname === '/admin' ? 'bg-indigo-700 text-white' : 'text-indigo-100 hover:bg-indigo-500'
-            }`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Admin
-          </Link>
-        </div>
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden mt-4 bg-white rounded-xl shadow-lg border-4 border-black p-4">
+            <div className="flex flex-col space-y-3">
+              {menuItems.map((item, index) => (
+                <Link 
+                  key={index} 
+                  href={item.path}
+                  className="py-2 px-4 rounded-lg font-bold text-center border-2 border-black"
+                  style={{ 
+                    backgroundColor: `${colors[index % colors.length]}`,
+                    color: 'white',
+                  }}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span style={{ 
+                    textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+                  }}>
+                    {item.name}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
