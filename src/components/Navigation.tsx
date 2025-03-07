@@ -1,104 +1,77 @@
 "use client";
 
-import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import Image from 'next/image';
+import { useState } from 'react';
+import { Menu } from 'lucide-react';
 import ColorfulText from './ColorfulText';
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
-
-  const menuItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Cards', path: '/flashcard' },
-    { name: 'Categories', path: '/category' },
-    { name: 'Games', path: '/games' },
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const links = [
+    { href: '/', label: 'Home' },
+    { href: '/flashcard', label: 'Cards' },
+    { href: '/categories', label: 'Categories' },
+    { href: '/games', label: 'Games' },
   ];
 
   const colors = ['#ff56ac', '#56ebff', '#a057ff', '#ffa726'];
 
   return (
-    <nav className="py-3 px-6 backdrop-blur-md bg-white/70 shadow-md">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex justify-between items-center">
-          {/* Logo */}
+    <nav className="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex justify-between items-center py-3">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center">
-              {/* <Image 
-                src="/IMG_1163.jpg" 
-                alt="Kids Logo" 
-                width={120} 
-                height={50} 
-                className="mr-2"
-              /> */}
-              <div className="ml-2 hidden sm:block">
-                <ColorfulText text="WordNest" className="text-3xl font-extrabold" />
-              </div>
+            <Link href="/" className="font-bold text-2xl">
+              <ColorfulText text="WordNest" className="text-4xl" />
             </Link>
           </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-1">
-            {menuItems.map((item, index) => (
+          
+          {/* Desktop navigation */}
+          <div className="hidden md:flex space-x-4">
+            {links.map((link, index) => (
               <Link 
-                key={index} 
-                href={item.path}
-                className="relative px-5 py-2 font-bold text-white rounded-full overflow-hidden group border-2 border-black"
-              >
-                <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform translate-x-0 -skew-x-12" 
-                      style={{ backgroundColor: colors[index % colors.length] }}></span>
-                <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-out transform skew-x-12 bg-black opacity-0 group-hover:opacity-20"></span>
-                <span className="relative" style={{ 
+                key={link.href}
+                href={link.href}
+                className="py-2 px-4 rounded-full text-white font-bold border-2 border-black transition-transform hover:scale-105"
+                style={{ 
+                  backgroundColor: colors[index % colors.length],
                   textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
-                }}>
-                  {item.name}
-                </span>
+                }}
+              >
+                {link.label}
               </Link>
             ))}
           </div>
-
-          {/* Mobile Menu Button */}
+          
+          {/* Mobile menu button */}
           <div className="md:hidden">
             <button 
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-full bg-[#ff56ac] text-white border-2 border-black"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-full bg-[#ff56ac] text-white"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {isOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              <Menu size={24} />
             </button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden mt-4 bg-white rounded-xl shadow-lg border-4 border-black p-4">
-            <div className="flex flex-col space-y-3">
-              {menuItems.map((item, index) => (
-                <Link 
-                  key={index} 
-                  href={item.path}
-                  className="py-2 px-4 rounded-lg font-bold text-center border-2 border-black"
-                  style={{ 
-                    backgroundColor: `${colors[index % colors.length]}`,
-                    color: 'white',
-                  }}
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span style={{ 
-                    textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
-                  }}>
-                    {item.name}
-                  </span>
-                </Link>
-              ))}
-            </div>
+        
+        {/* Mobile navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden py-4 space-y-2">
+            {links.map((link, index) => (
+              <Link 
+                key={link.href}
+                href={link.href}
+                className="block py-2 px-4 rounded-full text-white font-bold border-2 border-black text-center mb-2"
+                style={{ 
+                  backgroundColor: colors[index % colors.length],
+                  textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+                }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         )}
       </div>

@@ -14,7 +14,8 @@ import { Word } from '@/types';
 import { motion } from 'framer-motion';
 import FlashCard, { FlashCardMode } from '@/components/FlashCard';
 import VoiceSelector from '@/components/VoiceSelector';
-import SizeSlider from '@/components/SizeSlider';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 
 export default function CategoryPage() {
   const params = useParams();
@@ -28,7 +29,7 @@ export default function CategoryPage() {
   const [isSpeechSynthesisSupported, setIsSpeechSynthesisSupported] = useState(false);
   const [cardMode, setCardMode] = useState<FlashCardMode>('image-to-sound');
   const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
-  const [gridColumns, setGridColumns] = useState(3); // Valeur par défaut: 3 colonnes
+  const [gridColumns] = useState(3);
 
   // Set initial state after component mounts
   useEffect(() => {
@@ -50,13 +51,6 @@ export default function CategoryPage() {
       setFilteredWords(results);
     }
   }, [searchTerm, categoryId, isMounted]);
-
-  // Fonction pour gérer le changement du nombre de colonnes
-  const handleGridChange = (value: number) => {
-    // Convertir la valeur du slider (1-3) en nombre de colonnes (1-5)
-    const columns = Math.round(value * 2);
-    setGridColumns(columns);
-  };
 
   // Générer la classe CSS pour la grille en fonction du nombre de colonnes
   const getGridClass = () => {
@@ -109,6 +103,25 @@ export default function CategoryPage() {
   // Prevent hydration errors by not rendering until client-side
   if (!isMounted) {
     return null;
+  }
+
+  if (!category) {
+    return (
+      <div className="p-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 text-center">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Category not found</h2>
+            <Link 
+              href="/categories"
+              className="inline-flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+            >
+              <ArrowLeft size={16} />
+              Back to Categories
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -179,17 +192,6 @@ export default function CategoryPage() {
             </div>
           )}
           
-          {/* Slider pour ajuster le nombre de colonnes */}
-          <div className="mt-4 mb-6">
-            <p className="text-sm text-gray-600 mb-2 text-center">Ajuster le nombre de cartes par ligne</p>
-            <SizeSlider 
-              value={gridColumns / 2}
-              onChange={handleGridChange}
-              min={0.5}
-              max={2.5}
-              step={0.5}
-            />
-          </div>
           
           {/* Modern Search Bar with fixed text color */}
           <div className="relative max-w-md mx-auto mt-6">

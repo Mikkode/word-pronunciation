@@ -14,18 +14,17 @@ export interface FlashCardProps {
   mode: FlashCardMode;
   onCardClick?: () => void;
   isActive?: boolean;
-  gridColumns?: number; // Nombre de colonnes dans la grille
+  gridColumns?: number;
+  size?: 'small' | 'medium' | 'large';
 }
 
 export default function FlashCard({ 
   id, 
   text, 
   image, 
-  category, 
   mode = 'image-to-sound',
   onCardClick,
-  isActive = false,
-  gridColumns = 3
+  isActive = false
 }: FlashCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [flipTimer, setFlipTimer] = useState<NodeJS.Timeout | null>(null);
