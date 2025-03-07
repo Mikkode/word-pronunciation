@@ -47,14 +47,15 @@ export default function FlashCard({
   const handleCardClick = () => {
     console.log("Card clicked:", id, text, mode);
 
-    // Appeler le callback si fourni (pour le son)
+    // Appeler le callback si fourni
     if (onCardClick) {
       onCardClick();
     }
 
-    if (mode === "image-to-sound") {
+    // Gérer la synthèse vocale directement dans le composant
+    if (mode === "image-to-sound" && "speechSynthesis" in window) {
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "en-US";
+      utterance.lang = "en-US"; // Idéalement, cela devrait venir des props
       window.speechSynthesis.speak(utterance);
     }
 

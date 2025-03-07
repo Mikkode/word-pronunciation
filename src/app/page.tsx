@@ -1,7 +1,7 @@
 import ButtonBig from "@/components/ButtonBig";
 import ColorfulText from "@/components/ColorfulText";
 import Content from "@/components/Content";
-import DotAnimation from "@/components/DotAnimation";
+
 export default function Home() {
   return (
     <div className="max-w-4xl mx-auto">
