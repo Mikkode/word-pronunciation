@@ -47,7 +47,7 @@ export default function CategoryPage({
     <div className="max-w-4xl mx-auto font-kg-red-hands">
       <ColorfulText
         text="Flashcards"
-        className="text-4xl md:text-5xl font-extrabold mb-6 md:mb-8 text-center"
+        className="text-4xl md:text-5xl font-extrabold mb-6 md:mb-8 text-center "
       />
 
       <div className="sticky top-0 z-10 bg-white/90 backdrop-blur-md p-3 rounded-xl shadow-md mb-6">

@@ -17,11 +17,11 @@ export default function FlashcardPage() {
     <div className="max-w-4xl mx-auto">
       <ColorfulText
         text="Flashcards!"
-        className="text-4xl md:text-5xl font-extrabold mb-6 md:mb-8 text-center"
+        className="text-4xl md:text-5xl font-extrabold mb-6 md:mb-8 text-center font-kg-red-hands"
       />
 
       <Content className="font-kg-red-hands">
-        <h2 className="text-2xl md:text-3xl  text-[#a057ff] mb-4 md:mb-6">
+        <h2 className="text-2xl md:text-3xl text-[#a057ff] mb-4 md:mb-6">
           Choose a category
         </h2>
 
@@ -30,7 +30,7 @@ export default function FlashcardPage() {
             <button
               key={category.id}
               onClick={() => handleCategorySelect(category.id)}
-              className="py-3 md:py-4 px-4 md:px-6 rounded-full border-2 border-black font-bold text-white transition-transform hover:scale-105 shadow-md cursor-pointer text-center"
+              className="h-16 py-3 px-4 rounded-full border-2 border-black font-bold text-white transition-transform hover:scale-105 shadow-md cursor-pointer flex items-center justify-center"
               style={{
                 backgroundColor: colors[index % colors.length],
               }}

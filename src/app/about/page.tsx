@@ -7,7 +7,7 @@ export default function AboutPage() {
       <div className="max-w-4xl mx-auto">
         <ColorfulText
           text="About Us"
-          className="text-6xl font-extrabold mb-8 text-center"
+          className="text-6xl font-extrabold mb-8 text-center font-kg-red-hands"
         />
 
         <Content>

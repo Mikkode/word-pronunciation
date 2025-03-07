@@ -6,7 +6,7 @@ export default function PrintPage() {
     <div className="max-w-4xl mx-auto">
       <ColorfulText
         text="Printables!"
-        className="text-6xl font-extrabold mb-8 text-center"
+        className="text-6xl font-extrabold mb-8 text-center font-kg-red-hands"
       />
       <Content> </Content>
     </div>
