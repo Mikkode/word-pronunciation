@@ -1,21 +1,22 @@
 "use client";
 
-import Link from 'next/link';
-import { useState } from 'react';
-import { Menu } from 'lucide-react';
-import ColorfulText from './ColorfulText';
+import Link from "next/link";
+import { useState } from "react";
+import { Menu } from "lucide-react";
+import ColorfulText from "./ColorfulText";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const links = [
-    { href: '/', label: 'Home' },
-    { href: '/flashcard', label: 'Cards' },
-    { href: '/categories', label: 'Categories' },
-    { href: '/games', label: 'Games' },
+    { href: "/", label: "Home" },
+    { href: "/flashcard", label: "Cards" },
+    { href: "/categories", label: "Categories" },
+    { href: "/games", label: "Games" },
+    { href: "/about", label: "About" },
   ];
 
-  const colors = ['#ff56ac', '#56ebff', '#a057ff', '#ffa726'];
+  const colors = ["#ff56ac", "#56ebff", "#a057ff", "#ffa726"];
 
   return (
     <nav className="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
@@ -23,30 +24,31 @@ export default function Navigation() {
         <div className="flex justify-between items-center py-3">
           <div className="flex items-center">
             <Link href="/" className="font-bold text-2xl">
-              <ColorfulText text="WordNest" className="text-4xl" />
+              <ColorfulText text="PaperRings" className="text-4xl" />
             </Link>
           </div>
-          
+
           {/* Desktop navigation */}
           <div className="hidden md:flex space-x-4">
             {links.map((link, index) => (
-              <Link 
+              <Link
                 key={link.href}
                 href={link.href}
                 className="py-2 px-4 rounded-full text-white font-bold border-2 border-black transition-transform hover:scale-105"
-                style={{ 
+                style={{
                   backgroundColor: colors[index % colors.length],
-                  textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+                  textShadow:
+                    "1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
                 }}
               >
                 {link.label}
               </Link>
             ))}
           </div>
-          
+
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button 
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-full bg-[#ff56ac] text-white"
             >
@@ -54,18 +56,19 @@ export default function Navigation() {
             </button>
           </div>
         </div>
-        
+
         {/* Mobile navigation */}
         {isMenuOpen && (
           <div className="md:hidden py-4 space-y-2">
             {links.map((link, index) => (
-              <Link 
+              <Link
                 key={link.href}
                 href={link.href}
                 className="block py-2 px-4 rounded-full text-white font-bold border-2 border-black text-center mb-2"
-                style={{ 
+                style={{
                   backgroundColor: colors[index % colors.length],
-                  textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+                  textShadow:
+                    "1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
                 }}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -77,4 +80,4 @@ export default function Navigation() {
       </div>
     </nav>
   );
-} 
+}

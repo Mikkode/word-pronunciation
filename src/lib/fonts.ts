@@ -7,16 +7,6 @@ export const kgHappy = localFont({
       weight: '400',
       style: 'normal',
     },
-    {
-      path: '../../public/fonts/KGHAPPYShadows.ttf',
-      weight: '700',
-      style: 'normal',
-    },
-    {
-      path: '../../public/fonts/KGHAPPYSolid.ttf',
-      weight: '700',
-      style: 'normal',
-    },
   ],
   variable: '--font-kg-happy', // Permet d'utiliser la police avec Tailwind
   display: 'swap',

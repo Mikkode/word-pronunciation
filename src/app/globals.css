@@ -43,6 +43,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --font-ma-police: var(--font-ma-police);
 }
 
 :root {
@@ -123,6 +124,14 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@font-face {
+  font-family: "kg-happy";
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("/fonts/KGHAPPY.ttf") format("ttf");
 }
 
 .perspective-1000 {

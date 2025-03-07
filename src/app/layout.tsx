@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 import Image from 'next/image';
+import { kgHappy } from '@/lib/fonts';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${kgHappy.variable}`}>
       <body className={`${inter.className} bg-[#56ebff]/30 min-h-screen relative`}>
         {/* Barre de navigation en premier pour qu'elle soit au-dessus */}
         <Navigation />
