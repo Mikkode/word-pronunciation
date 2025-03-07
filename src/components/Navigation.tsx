@@ -11,8 +11,9 @@ export default function Navigation() {
   const links = [
     { href: "/", label: "Home" },
     { href: "/flashcard", label: "Cards" },
-    { href: "/categories", label: "Categories" },
-    { href: "/games", label: "Games" },
+    { href: "/craft", label: "Craft" },
+    { href: "/print", label: "Printables" },
+    { href: "/resources", label: "Parent & Teacher Resources" },
     { href: "/about", label: "About" },
   ];
 
