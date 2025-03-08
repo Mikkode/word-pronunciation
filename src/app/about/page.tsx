@@ -10,7 +10,7 @@ export default function AboutPage() {
           className="text-6xl font-extrabold mb-8 text-center font-kg-red-hands"
         />
 
-        <Content>
+        <Content className="font-kg-red-hands">
           <h3 className="text-2xl font-bold text-[#a057ff] mb-4">
             Why PAPER RINGS?
           </h3>
@@ -21,10 +21,39 @@ export default function AboutPage() {
               links:
             </p>
 
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Letters link together to form words</li>
-              <li>Words connect to build sentences</li>
-              <li>Sentences lead to independent reading</li>
+            <ul className="list-none space-y-4 pl-2">
+              <li className="flex items-start">
+                <div className="relative mr-3 mt-1 flex-shrink-0">
+                  <div
+                    className="absolute w-5 h-5 bg-[#ff56ac] rounded-full animate-bounce"
+                    style={{ animationDuration: "2s" }}
+                  ></div>
+                  <div className="w-5 h-5 bg-[#ff56ac]/30 rounded-full transform scale-125"></div>
+                </div>
+                <p className="text-lg">Letters link together to form words</p>
+              </li>
+
+              <li className="flex items-start">
+                <div className="relative mr-3 mt-1 flex-shrink-0">
+                  <div
+                    className="absolute w-5 h-5 bg-[#a057ff] rounded-full animate-bounce"
+                    style={{ animationDuration: "2s", animationDelay: "0.3s" }}
+                  ></div>
+                  <div className="w-5 h-5 bg-[#a057ff]/30 rounded-full transform scale-125"></div>
+                </div>
+                <p className="text-lg">Words connect to build sentences</p>
+              </li>
+
+              <li className="flex items-start">
+                <div className="relative mr-3 mt-1 flex-shrink-0">
+                  <div
+                    className="absolute w-5 h-5 bg-[#56ebff] rounded-full animate-bounce"
+                    style={{ animationDuration: "2s", animationDelay: "0.6s" }}
+                  ></div>
+                  <div className="w-5 h-5 bg-[#56ebff]/30 rounded-full transform scale-125"></div>
+                </div>
+                <p className="text-lg">Sentences lead to independent reading</p>
+              </li>
             </ul>
 
             <p className="text-lg">

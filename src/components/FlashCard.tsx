@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-
+import { Volume2 } from "lucide-react";
 export type CardMode = "image-to-text" | "text-to-image" | "image-to-sound";
 
 interface CardProps {
@@ -28,14 +28,15 @@ export default function FlashCard({
   color2 = "bg-white",
   mode = "image-to-text",
   isActive = false,
-  lang = "fr-FR",
+  lang = "en-US",
 }: CardProps) {
-  const [isFlipped, setIsFlipped] = useState(false);
+  // Initialiser isFlipped à true si le mode est text-to-image
+  const [isFlipped, setIsFlipped] = useState(mode === "text-to-image");
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   // Réinitialiser le flip quand le mode change
   useEffect(() => {
-    setIsFlipped(false);
+    setIsFlipped(mode === "text-to-image");
   }, [mode]);
 
   // Fonction pour lire le texte avec la synthèse vocale
@@ -126,9 +127,9 @@ export default function FlashCard({
 
             {/* Bouton de son pour le mode image-to-sound */}
             {mode === "image-to-sound" && text && (
-              <div className="absolute bottom-4 right-4">
+              <div className="absolute bottom-4 right-4 ">
                 <button
-                  className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                  className={`w-12 h-12 rounded-full flex items-center justify-center cursor-pointer ${
                     isSpeaking ? "bg-purple-main" : "bg-blue-main"
                   } text-white border-2 border-black`}
                   onClick={(e) => {
@@ -141,37 +142,7 @@ export default function FlashCard({
                     }
                   }}
                 >
-                  {isSpeaking ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 9v6m4-6v6M5 8h14"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-                      />
-                    </svg>
-                  )}
+                  <Volume2 className="h-6 w-6" />
                 </button>
               </div>
             )}

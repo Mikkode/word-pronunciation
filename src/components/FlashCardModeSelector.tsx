@@ -1,10 +1,12 @@
 "use client";
 
-import { FlashCardMode } from "./FlashCard";
+import { Volume2, Image as ImageIcon, ALargeSmall } from "lucide-react";
+
+import { CardMode } from "./FlashCard";
 
 interface FlashCardModeSelectorProps {
-  currentMode: FlashCardMode;
-  onModeChange: (mode: FlashCardMode) => void;
+  currentMode: CardMode;
+  onModeChange: (mode: CardMode) => void;
 }
 
 export default function FlashCardModeSelector({
@@ -22,7 +24,7 @@ export default function FlashCardModeSelector({
         }`}
         title="Sound Mode"
       >
-        <span className="text-lg">🔊</span>
+        <Volume2 className="h-6 w-6" />
       </button>
       <button
         onClick={() => onModeChange("image-to-text")}
@@ -33,7 +35,7 @@ export default function FlashCardModeSelector({
         }`}
         title="Flip Mode"
       >
-        <span className="text-lg">🔄</span>
+        <ImageIcon className="h-6 w-6" />
       </button>
       <button
         onClick={() => onModeChange("text-to-image")}
@@ -44,7 +46,7 @@ export default function FlashCardModeSelector({
         }`}
         title="Text Mode"
       >
-        <span className="text-lg">📝</span>
+        <ALargeSmall className="h-6 w-6" />
       </button>
     </div>
   );

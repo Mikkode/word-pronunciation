@@ -19,20 +19,48 @@ export default function Home() {
           Welcome to Paper Rings!
         </p>
 
-        <ul className="text-lg text-gray-800 space-y-4 list-disc pl-6">
-          <li>
-            Paper Rings ensures a seamless learning experience by bringing
-            engaging classroom phonics strategies to home.
+        <ul className="text-lg text-gray-800 space-y-6 list-none">
+          <li className="flex items-start">
+            <div className="relative mr-3 mt-1 flex-shrink-0">
+              <div
+                className="absolute w-5 h-5 bg-[#ff56ac] rounded-full animate-bounce"
+                style={{ animationDuration: "2s" }}
+              ></div>
+              <div className="w-5 h-5 bg-[#ff56ac]/30 rounded-full transform scale-125"></div>
+            </div>
+            <p>
+              Paper Rings ensures a seamless learning experience by bringing
+              engaging classroom phonics strategies to home.
+            </p>
           </li>
 
-          <li>
-            Designed by a preschool teacher, it helps parents reinforce phonics
-            skills through fun, interactive features for steady progress.
+          <li className="flex items-start">
+            <div className="relative mr-3 mt-1 flex-shrink-0">
+              <div
+                className="absolute w-5 h-5 bg-[#a057ff] rounded-full animate-bounce"
+                style={{ animationDuration: "2s", animationDelay: "0.3s" }}
+              ></div>
+              <div className="w-5 h-5 bg-[#a057ff]/30 rounded-full transform scale-125"></div>
+            </div>
+            <p>
+              Designed by a preschool teacher, it helps parents reinforce
+              phonics skills through fun, interactive features for steady
+              progress.
+            </p>
           </li>
 
-          <li>
-            Together, let&#39;s create a strong foundation for your child&apos;s
-            reading journey.
+          <li className="flex items-start">
+            <div className="relative mr-3 mt-1 flex-shrink-0">
+              <div
+                className="absolute w-5 h-5 bg-[#56ebff] rounded-full animate-bounce"
+                style={{ animationDuration: "2s", animationDelay: "0.6s" }}
+              ></div>
+              <div className="w-5 h-5 bg-[#56ebff]/30 rounded-full transform scale-125"></div>
+            </div>
+            <p>
+              Together, let&#39;s create a strong foundation for your
+              child&apos;s reading journey.
+            </p>
           </li>
         </ul>
 
