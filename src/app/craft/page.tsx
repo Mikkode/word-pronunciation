@@ -4,7 +4,12 @@ import Content from "@/components/Content";
 
 export default function CraftPage() {
   // Couleurs pour les cartes
-  const colors = ["#ff56ac", "#56ebff", "#a057ff", "#ffa726"];
+  const colors = [
+    "bg-pink-main",
+    "bg-blue-main",
+    "bg-purple-main",
+    "bg-orange-main",
+  ];
 
   // Données pour les cartes
   const cards = [

@@ -187,6 +187,13 @@
   }
 }
 
+@theme inline {
+  --color-pink-main: #ff56ac;
+  --color-blue-main: #56ebff;
+  --color-purple-main: #a057ff;
+  --color-orange-main: #ffa726;
+}
+
 .perspective-1000 {
   perspective: 1000px;
 }
