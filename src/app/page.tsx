@@ -4,7 +4,7 @@ import Content from "@/components/Content";
 
 export default function Home() {
   return (
-    <div className="max-w-4xl mx-auto pl-8 pr-8">
+    <div className="max-w-4xl mx-auto">
       <ColorfulText
         text="Welcome!"
         className="text-6xl font-extrabold mb-8 text-center font-kg-red-hands"

@@ -12,7 +12,7 @@ export default function AboutPage() {
 
         <Content className="font-kg-red-hands">
           <h3 className="text-2xl font-bold text-[#a057ff] mb-4">
-            Why PAPER RINGS?
+            Why Paper Rings ?
           </h3>
 
           <div className="space-y-6">
