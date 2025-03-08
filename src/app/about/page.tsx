@@ -3,7 +3,7 @@ import ColorfulText from "@/components/ColorfulText";
 import Content from "@/components/Content";
 export default function AboutPage() {
   return (
-    <div className={`pl-8 pr-8`}>
+    <div>
       <div className="max-w-4xl mx-auto">
         <ColorfulText
           text="About Us"

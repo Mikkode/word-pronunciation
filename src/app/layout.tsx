@@ -48,7 +48,7 @@ export default function RootLayout({
             priority
           />
         </div>
-        <main className="relative z-10 pt-16">{children}</main>
+        <main className="relative z-10 pt-16 pl-2 pr-2">{children}</main>
         <section className="pb-16">
           <DotAnimation />
         </section>

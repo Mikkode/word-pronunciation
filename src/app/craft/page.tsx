@@ -5,7 +5,7 @@ export default function CraftPage() {
   // Couleurs pour les cartes
 
   return (
-    <div className="max-w-4xl mx-auto pl-8 pr-8">
+    <div className="max-w-4xl mx-auto">
       <ColorfulText
         text="Craft!"
         className="text-6xl font-extrabold mb-8 text-center font-kg-red-hands"
