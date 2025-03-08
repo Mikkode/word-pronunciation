@@ -13,15 +13,69 @@ export default function CraftPage() {
 
   // Données pour les cartes
   const cards = [
-    { id: 1, image: "/cat.png", title: "Chat" },
-    { id: 2, image: "/IMG_1163.jpg", title: "Minou" },
-    { id: 3, image: "/arc.png", title: "Félin" },
-    { id: 4, image: "/cat.png", title: "Matou" },
-    { id: 5, image: "/cat.png", title: "Chaton" },
-    { id: 6, image: "/cat.png", title: "Tigre" },
-    { id: 7, image: "/cat.png", title: "Lion" },
-    { id: 8, image: "/cat.png", title: "Panthère" },
-    { id: 9, image: "/cat.png", title: "Jaguar" },
+    {
+      id: 1,
+      image: "/cat.png",
+      title: "Chat",
+      text: "Dinosaure",
+      mode: "image-to-text",
+    },
+    {
+      id: 2,
+      image: "/IMG_1163.jpg",
+      title: "Minou",
+      text: "Minou",
+      mode: "image-to-sound",
+    },
+    {
+      id: 3,
+      image: "/arc.png",
+      title: "Félin",
+      text: "Felin",
+      mode: "image-to-text",
+    },
+    {
+      id: 4,
+      image: "/cat.png",
+      title: "Matou",
+      text: "A",
+      mode: "image-to-Text",
+    },
+    {
+      id: 5,
+      image: "/cat.png",
+      title: "Chaton",
+      text: "Chaton",
+      mode: "image-to-text",
+    },
+    {
+      id: 6,
+      image: "/cat.png",
+      title: "Tigre",
+      text: "Tigre",
+      mode: "image-to-sound",
+    },
+    {
+      id: 7,
+      image: "/cat.png",
+      title: "Lion",
+      text: "Lion",
+      mode: "image-to-text",
+    },
+    {
+      id: 8,
+      image: "/cat.png",
+      title: "Panthère",
+      text: "Panthère",
+      mode: "image-to-sound",
+    },
+    {
+      id: 9,
+      image: "/cat.png",
+      title: "Jaguar",
+      text: "Jaguar",
+      mode: "image-to-text",
+    },
   ];
 
   return (
@@ -37,8 +91,16 @@ export default function CraftPage() {
               key={card.id}
               image={card.image}
               title={card.title}
+              text={card.text}
+              mode={
+                card.mode as
+                  | "image-to-text"
+                  | "image-to-sound"
+                  | "text-to-image"
+              }
               color1={colors[index % colors.length]}
-              color2="white"
+              color2="bg-white"
+              lang="en-US"
             />
           ))}
         </div>
