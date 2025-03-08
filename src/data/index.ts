@@ -83,32 +83,28 @@ export const words: Word[] = [
     id: uuidv4(),
     text: "vertical line",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1550895030-823330fc2551?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "strokes-lines",
   },
   {
     id: uuidv4(),
     text: "horizontal line",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1473186578172-c141e6798cf4?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "strokes-lines",
   },
   {
     id: uuidv4(),
     text: "diagonal line",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "strokes-lines",
   },
   {
     id: uuidv4(),
     text: "curved line",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "strokes-lines",
   },
 
@@ -117,32 +113,28 @@ export const words: Word[] = [
     id: uuidv4(),
     text: "A",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1560785496-3c9d27877182?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "letter-recognition",
   },
   {
     id: uuidv4(),
     text: "B",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1516383607781-913a19294fd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "letter-recognition",
   },
   {
     id: uuidv4(),
     text: "C",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1510935813936-763eb6fbc7f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "letter-recognition",
   },
   {
     id: uuidv4(),
     text: "D",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "letter-recognition",
   },
 
@@ -151,32 +143,28 @@ export const words: Word[] = [
     id: uuidv4(),
     text: "Write A",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "letter-formation",
   },
   {
     id: uuidv4(),
     text: "Write B",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "letter-formation",
   },
   {
     id: uuidv4(),
     text: "Write C",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "letter-formation",
   },
   {
     id: uuidv4(),
     text: "Write D",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1510590337019-5ef8d3d32116?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "letter-formation",
   },
 
@@ -185,32 +173,28 @@ export const words: Word[] = [
     id: uuidv4(),
     text: "A is for Apple",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "phonics-sounds",
   },
   {
     id: uuidv4(),
     text: "B is for Ball",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "phonics-sounds",
   },
   {
     id: uuidv4(),
     text: "C is for Cat",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "phonics-sounds",
   },
   {
     id: uuidv4(),
     text: "D is for Dog",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "phonics-sounds",
   },
 
@@ -219,32 +203,28 @@ export const words: Word[] = [
     id: uuidv4(),
     text: "cat",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "cvc-words",
   },
   {
     id: uuidv4(),
     text: "dog",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "cvc-words",
   },
   {
     id: uuidv4(),
     text: "sun",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1522124624696-7ea32eb9592c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "cvc-words",
   },
   {
     id: uuidv4(),
     text: "pen",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "cvc-words",
   },
 
@@ -253,32 +233,28 @@ export const words: Word[] = [
     id: uuidv4(),
     text: "frog",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1551189014-fe516aed0e9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "ccvc-words",
   },
   {
     id: uuidv4(),
     text: "stop",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1551041777-ed277b8dd348?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "ccvc-words",
   },
   {
     id: uuidv4(),
     text: "flag",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1508005213340-71d3e6ae7be8?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "ccvc-words",
   },
   {
     id: uuidv4(),
     text: "clap",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "ccvc-words",
   },
 
@@ -287,32 +263,28 @@ export const words: Word[] = [
     id: uuidv4(),
     text: "sh in ship",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1566795180883-a2f3b5c6d85a?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "digraphs",
   },
   {
     id: uuidv4(),
     text: "ch in chair",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "digraphs",
   },
   {
     id: uuidv4(),
     text: "th in thumb",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1559701404-0c2e232d24c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "digraphs",
   },
   {
     id: uuidv4(),
     text: "wh in wheel",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "digraphs",
   },
 
@@ -321,32 +293,28 @@ export const words: Word[] = [
     id: uuidv4(),
     text: "bl in black",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1550684376-efcbd6e3f031?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "blends",
   },
   {
     id: uuidv4(),
     text: "st in star",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "blends",
   },
   {
     id: uuidv4(),
     text: "gr in grass",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "blends",
   },
   {
     id: uuidv4(),
     text: "tr in tree",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "blends",
   },
 
@@ -355,32 +323,28 @@ export const words: Word[] = [
     id: uuidv4(),
     text: "The cat ran.",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "sentence-writing",
   },
   {
     id: uuidv4(),
     text: "I see a dog.",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "sentence-writing",
   },
   {
     id: uuidv4(),
     text: "The sun is hot.",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1522124624696-7ea32eb9592c?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "sentence-writing",
   },
   {
     id: uuidv4(),
     text: "I can hop.",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1551189014-fe516aed0e9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "sentence-writing",
   },
 
@@ -389,32 +353,28 @@ export const words: Word[] = [
     id: uuidv4(),
     text: "the",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "high-frequency-words",
   },
   {
     id: uuidv4(),
     text: "is",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "high-frequency-words",
   },
   {
     id: uuidv4(),
     text: "you",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "high-frequency-words",
   },
   {
     id: uuidv4(),
     text: "and",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "high-frequency-words",
   },
 
@@ -423,32 +383,28 @@ export const words: Word[] = [
     id: uuidv4(),
     text: "Match letters",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "interactive-learning",
   },
   {
     id: uuidv4(),
     text: "Find the word",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cat.png",
     category: "interactive-learning",
   },
   {
     id: uuidv4(),
     text: "Word puzzle",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/arc.png",
     category: "interactive-learning",
   },
   {
     id: uuidv4(),
     text: "Letter game",
     lang: "en-US",
-    image:
-      "https://images.unsplash.com/photo-1553481187-be93c21490a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=150&q=70",
+    image: "/cloud.png",
     category: "interactive-learning",
   },
 ];

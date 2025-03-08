@@ -1,29 +1,33 @@
 "use client";
 
-import FlashCard, { FlashCardMode } from "./FlashCard";
+import FlashCard, { CardMode } from "./FlashCard";
 import { Word } from "@/types";
 
 interface FlashCardGridProps {
   words: Word[];
-  mode: FlashCardMode;
+  mode: CardMode;
   borderColor?: string;
 }
 
 export default function FlashCardGrid({ words, mode }: FlashCardGridProps) {
+  const colors = [
+    "bg-pink-main",
+    "bg-blue-main",
+    "bg-purple-main",
+    "bg-orange-main",
+  ];
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 ">
-      {words.map((word) => (
-        <div
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16 ">
+      {words.map((word, index) => (
+        <FlashCard
           key={word.id}
-          className="rounded-xl overflow-hidden transform transition-transform hover:scale-105 shadow-lg cursor-pointer"
-        >
-          <FlashCard
-            id={word.id}
-            text={word.text}
-            image={word.image}
-            mode={mode}
-          />
-        </div>
+          image={word.image}
+          title={word.text}
+          text={word.text}
+          mode={mode}
+          color1={colors[index % colors.length]}
+          color2="bg-white"
+        />
       ))}
     </div>
   );

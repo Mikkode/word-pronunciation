@@ -8,8 +8,8 @@ import Content from "@/components/Content";
 import FlashCardGrid from "@/components/FlashCardGrid";
 import FlashCardModeSelector from "@/components/FlashCardModeSelector";
 import { getWordsByCategory } from "@/data";
-import { FlashCardMode } from "@/components/FlashCard";
 import { categories } from "@/data";
+import { CardMode } from "@/components/FlashCard";
 
 export default function CategoryPage({
   params,
@@ -19,7 +19,7 @@ export default function CategoryPage({
   const router = useRouter();
   const { id } = use(params);
   const [flashcardMode, setFlashcardMode] =
-    useState<FlashCardMode>("image-to-sound");
+    useState<CardMode>("image-to-sound");
 
   const wordsForCategory = getWordsByCategory(id);
 
@@ -30,7 +30,7 @@ export default function CategoryPage({
     router.push("/flashcard");
   };
 
-  const handleModeChange = (mode: FlashCardMode) => {
+  const handleModeChange = (mode: CardMode) => {
     setFlashcardMode(mode);
   };
 
@@ -46,7 +46,7 @@ export default function CategoryPage({
   return (
     <div className="max-w-4xl mx-auto font-kg-red-hands">
       <ColorfulText
-        text="Flashcards"
+        text="Flashcards!"
         className="text-4xl md:text-5xl font-extrabold mb-6 md:mb-8 text-center "
       />
 
