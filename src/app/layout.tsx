@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import DotAnimation from "@/components/DotAnimation";
-import styles from "./layout.module.css";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,28 +25,12 @@ export default function RootLayout({
         {/* Barre de navigation en premier pour qu'elle soit au-dessus */}
         <Navigation />
 
-        {/* Ajout du fond animé */}
-        <div className={styles.animatedBackground}>
-          <div className={styles.sun}></div>
-          <div className={styles.moon}></div>
-          <div className={styles.stars}>
-            <div className={styles.star}></div>
-            <div className={styles.star}></div>
-            <div className={styles.star}></div>
-            <div className={styles.star}></div>
-            <div className={styles.star}></div>
-            <div className={styles.star}></div>
-            <div className={styles.star}></div>
-            <div className={styles.star}></div>
-            <div className={styles.star}></div>
-            <div className={styles.star}></div>
-            <div className={styles.star}></div>
-            <div className={styles.star}></div>
-          </div>
-          <div className={styles.cloud1}></div>
-          <div className={styles.cloud2}></div>
-          <div className={styles.cloud3}></div>
-        </div>
+        {/* Fond animé avec configuration simplifiée */}
+        <AnimatedBackground
+          starsCount={300}
+          cycleDuration={10}
+          forceMode="night" // Peut être "day", "night" ou "auto"
+        />
 
         <main className="relative z-10 pt-16 pl-2 pr-2">{children}</main>
         <section className="pb-16">
