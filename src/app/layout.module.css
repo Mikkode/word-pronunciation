@@ -19,7 +19,7 @@
   background: #ffd700;
   border-radius: 50%;
   box-shadow: 0 0 30px #ffa500;
-  animation: sunMove 20s infinite linear;
+  animation: sunMove 20s infinite linear, sunOpacity 60s infinite linear;
 }
 
 .sun::after {
@@ -55,8 +55,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0;
-  animation: starsAppear 60s infinite linear;
+  animation: starsOpacity 60s infinite linear;
 }
 
 .star {
@@ -171,8 +170,21 @@
   background: #f5f3ce;
   border-radius: 50%;
   box-shadow: 0 0 20px #f5f3ce;
-  opacity: 0;
-  animation: moonAppear 60s infinite linear;
+  animation: moonMove 20s infinite linear, moonOpacity 60s infinite linear;
+}
+
+/* Cratères de la lune */
+.moon::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 12px;
+  height: 12px;
+  background: rgba(245, 243, 206, 0.8);
+  border-radius: 50%;
+  box-shadow: -15px 10px 0 -3px rgba(245, 243, 206, 0.6),
+    10px -8px 0 -4px rgba(245, 243, 206, 0.5);
 }
 
 .cloud1,
@@ -318,47 +330,73 @@
   }
 }
 
+@keyframes sunOpacity {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes moonOpacity {
+  0%,
+  45% {
+    opacity: 0;
+  }
+  50%,
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes starsOpacity {
+  0%,
+  40% {
+    opacity: 0;
+  }
+  50%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes moonMove {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(15px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
 @keyframes dayNightCycle {
   0%,
   100% {
     background: linear-gradient(to bottom, #87ceeb, #e0f7ff);
   }
-  40% {
-    background: linear-gradient(to bottom, #87ceeb, #e0f7ff);
-  }
   50% {
-    background: linear-gradient(to bottom, #4a6d8c, #172a45);
-  }
-  90% {
-    background: linear-gradient(to bottom, #4a6d8c, #172a45);
-  }
-}
-
-@keyframes starsAppear {
-  0%,
-  40%,
-  95%,
-  100% {
-    opacity: 0;
-  }
-  50%,
-  90% {
-    opacity: 1;
-  }
-}
-
-@keyframes moonAppear {
-  0%,
-  40%,
-  95%,
-  100% {
-    opacity: 0;
-    transform: translateY(0);
-  }
-  50%,
-  90% {
-    opacity: 1;
-    transform: translateY(20px);
+    background: linear-gradient(to bottom, #0a1128, #1c2541);
   }
 }
 

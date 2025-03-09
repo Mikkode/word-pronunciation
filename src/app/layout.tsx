@@ -18,10 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // <html lang="en" className={`${kgHappy.variable}`}>
     <html lang="en">
       <body
-        className={`${inter.className} bg-[#56ebff]/30 min-h-screen relative`}
+        className={`${inter.className} min-h-screen flex flex-col bg-white relative`}
       >
         {/* Barre de navigation en premier pour qu'elle soit au-dessus */}
         <Navigation />

@@ -8,13 +8,33 @@
 }
 
 .timerInner {
-  background: linear-gradient(135deg, #6ee2f5, #6454f0);
   border-radius: 20px;
   padding: 8px 15px;
   border: 3px solid #fff;
-  box-shadow: 0 0 0 3px #4a54f0, inset 0 0 10px rgba(255, 255, 255, 0.5);
   position: relative;
   overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Variantes de couleur */
+.pinkTimer {
+  background: linear-gradient(135deg, #ff56ac, #ff3d9a);
+  box-shadow: 0 0 0 3px #ff56ac, inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.blueTimer {
+  background: linear-gradient(135deg, #6ee2f5, #6454f0);
+  box-shadow: 0 0 0 3px #4a54f0, inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.purpleTimer {
+  background: linear-gradient(135deg, #a057ff, #8a4bff);
+  box-shadow: 0 0 0 3px #8a4bff, inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.orangeTimer {
+  background: linear-gradient(135deg, #ffde59, #ff914d);
+  box-shadow: 0 0 0 3px #ff914d, inset 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .timerInner::before {
@@ -37,7 +57,7 @@
   font-weight: bold;
   font-size: 1.2rem;
   color: #fff;
-  text-shadow: 0 2px 0 #3a44c0, 0 0 5px rgba(255, 255, 255, 0.7);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2), 0 0 5px rgba(255, 255, 255, 0.7);
   letter-spacing: 2px;
   position: relative;
 }
