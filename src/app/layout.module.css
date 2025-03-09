@@ -1,0 +1,164 @@
+.animatedBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #87ceeb, #e0f7ff);
+}
+
+.sun {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  width: 80px;
+  height: 80px;
+  background: #ffd700;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #ffa500;
+  animation: sunMove 20s infinite linear;
+}
+
+.sun::after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  background: radial-gradient(circle, #ffd700 40%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cloud1,
+.cloud2,
+.cloud3 {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+}
+
+.cloud1 {
+  top: 100px;
+  left: -150px;
+  width: 150px;
+  height: 50px;
+  animation: cloudMove1 35s infinite linear;
+}
+
+.cloud2 {
+  top: 180px;
+  left: -200px;
+  width: 200px;
+  height: 60px;
+  animation: cloudMove2 45s infinite linear;
+}
+
+.cloud3 {
+  top: 250px;
+  left: -180px;
+  width: 180px;
+  height: 55px;
+  animation: cloudMove3 40s infinite linear;
+}
+
+.cloud1::before,
+.cloud1::after,
+.cloud2::before,
+.cloud2::after,
+.cloud3::before,
+.cloud3::after {
+  content: "";
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+}
+
+.cloud1::before {
+  width: 60px;
+  height: 60px;
+  top: -25px;
+  left: 30px;
+}
+
+.cloud1::after {
+  width: 70px;
+  height: 70px;
+  top: -30px;
+  right: 30px;
+}
+
+.cloud2::before {
+  width: 70px;
+  height: 70px;
+  top: -30px;
+  left: 40px;
+}
+
+.cloud2::after {
+  width: 80px;
+  height: 80px;
+  top: -35px;
+  right: 40px;
+}
+
+.cloud3::before {
+  width: 65px;
+  height: 65px;
+  top: -28px;
+  left: 35px;
+}
+
+.cloud3::after {
+  width: 75px;
+  height: 75px;
+  top: -32px;
+  right: 35px;
+}
+
+@keyframes sunMove {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(15px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(0) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(270deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}
+
+@keyframes cloudMove1 {
+  from {
+    left: -150px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes cloudMove2 {
+  from {
+    left: -200px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes cloudMove3 {
+  from {
+    left: -180px;
+  }
+  to {
+    left: 100%;
+  }
+}

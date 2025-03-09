@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Image from "next/image";
 import DotAnimation from "@/components/DotAnimation";
+import styles from "./layout.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,14 @@ export default function RootLayout({
       >
         {/* Barre de navigation en premier pour qu'elle soit au-dessus */}
         <Navigation />
+
+        {/* Ajout du fond animé */}
+        <div className={styles.animatedBackground}>
+          <div className={styles.sun}></div>
+          <div className={styles.cloud1}></div>
+          <div className={styles.cloud2}></div>
+          <div className={styles.cloud3}></div>
+        </div>
 
         <main className="relative z-10 pt-16 pl-2 pr-2">{children}</main>
         <section className="pb-16">
