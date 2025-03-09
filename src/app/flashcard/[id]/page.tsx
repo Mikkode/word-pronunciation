@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { use } from "react";
 import ColorfulText from "@/components/ColorfulText";
@@ -10,6 +10,7 @@ import FlashCardModeSelector from "@/components/FlashCardModeSelector";
 import { getWordsByCategory } from "@/data";
 import { categories } from "@/data";
 import { CardMode } from "@/components/FlashCard";
+import styles from "./timer.module.css";
 
 export default function CategoryPage({
   params,
@@ -20,6 +21,48 @@ export default function CategoryPage({
   const { id } = use(params);
   const [flashcardMode, setFlashcardMode] =
     useState<CardMode>("image-to-sound");
+
+  // Utiliser useRef pour stocker le timer sans déclencher de re-render
+  const timerRef = useRef({ hours: 0, minutes: 0, seconds: 0 });
+  const timerDisplayRef = useRef<HTMLDivElement>(null);
+
+  // Format timer display with leading zeros
+  const formatTime = (value: number) => {
+    return value.toString().padStart(2, "0");
+  };
+
+  // Timer logic
+  useEffect(() => {
+    const updateTimerDisplay = () => {
+      if (timerDisplayRef.current) {
+        const { hours, minutes, seconds } = timerRef.current;
+        timerDisplayRef.current.textContent = `${formatTime(
+          hours
+        )}:${formatTime(minutes)}:${formatTime(seconds)}`;
+      }
+    };
+
+    const interval = setInterval(() => {
+      const { seconds, minutes, hours } = timerRef.current;
+
+      const newSeconds = seconds + 1;
+      const newMinutes = minutes + Math.floor(newSeconds / 60);
+      const newHours = hours + Math.floor(newMinutes / 60);
+
+      timerRef.current = {
+        hours: newHours % 24,
+        minutes: newMinutes % 60,
+        seconds: newSeconds % 60,
+      };
+
+      updateTimerDisplay();
+    }, 1000);
+
+    // Initialiser l'affichage
+    updateTimerDisplay();
+
+    return () => clearInterval(interval);
+  }, []);
 
   const wordsForCategory = getWordsByCategory(id);
 
@@ -49,6 +92,15 @@ export default function CategoryPage({
         text="Flip Cards"
         className="text-4xl md:text-5xl font-extrabold mb-6 md:mb-8 text-center "
       />
+
+      {/* Timer flottant */}
+      <div className={styles.floatingTimer}>
+        <div className={styles.timerInner}>
+          <div className={styles.timerDigits} ref={timerDisplayRef}>
+            00:00:00
+          </div>
+        </div>
+      </div>
 
       <div className="sticky top-0 z-10 bg-white/90 backdrop-blur-md p-3 rounded-xl shadow-md mb-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
