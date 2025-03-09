@@ -46,7 +46,7 @@ export default function CategoryPage({
   return (
     <div className="max-w-4xl mx-auto font-kg-red-hands">
       <ColorfulText
-        text="Flashcards!"
+        text="Flip Cards"
         className="text-4xl md:text-5xl font-extrabold mb-6 md:mb-8 text-center "
       />
 

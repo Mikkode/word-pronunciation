@@ -16,7 +16,7 @@ export default function FlashcardPage() {
   return (
     <div className="max-w-4xl mx-auto">
       <ColorfulText
-        text="Flashcards!"
+        text="Flip Cards"
         className="text-4xl md:text-5xl font-extrabold mb-6 md:mb-8 text-center font-kg-red-hands"
       />
 

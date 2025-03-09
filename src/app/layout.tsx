@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
-import Image from "next/image";
 import DotAnimation from "@/components/DotAnimation";
 import styles from "./layout.module.css";
 
@@ -30,6 +29,21 @@ export default function RootLayout({
         {/* Ajout du fond animé */}
         <div className={styles.animatedBackground}>
           <div className={styles.sun}></div>
+          <div className={styles.moon}></div>
+          <div className={styles.stars}>
+            <div className={styles.star}></div>
+            <div className={styles.star}></div>
+            <div className={styles.star}></div>
+            <div className={styles.star}></div>
+            <div className={styles.star}></div>
+            <div className={styles.star}></div>
+            <div className={styles.star}></div>
+            <div className={styles.star}></div>
+            <div className={styles.star}></div>
+            <div className={styles.star}></div>
+            <div className={styles.star}></div>
+            <div className={styles.star}></div>
+          </div>
           <div className={styles.cloud1}></div>
           <div className={styles.cloud2}></div>
           <div className={styles.cloud3}></div>
