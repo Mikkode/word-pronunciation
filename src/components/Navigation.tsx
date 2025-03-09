@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Menu } from "lucide-react";
 import ColorfulText from "./ColorfulText";
 import { usePathname } from "next/navigation";
+import styles from "./Navigation.module.css";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,9 +35,9 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50 font-kg-red-hands">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between items-center py-3">
+    <nav className={styles.navContainer}>
+      <div className={styles.navContent}>
+        <div className={styles.navFlex}>
           <div className="flex items-center">
             <Link href="/" className="font-bold text-2xl">
               <ColorfulText text="PaperRings" className="text-4xl" />
@@ -78,7 +79,7 @@ export default function Navigation() {
 
         {/* Mobile navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 space-y-2">
+          <div className={styles.mobileMenu}>
             {links.map((link, index) => (
               <Link
                 key={link.href}
