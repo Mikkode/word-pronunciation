@@ -1,5 +1,3 @@
-"use client";
-
 import FlashCard, { CardMode } from "./FlashCard";
 import { Word } from "@/types";
 
