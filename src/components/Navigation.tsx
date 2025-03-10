@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import DesktopNav from "@/components/navigation/DesktopNav";
 import MediumNav from "@/components/navigation/MediumNav";
 import MobileNav from "@/components/navigation/MobileNav";
-import ColorfulText from "./ColorfulText";
 import Image from "next/image";
 
 export default function Navigation() {
