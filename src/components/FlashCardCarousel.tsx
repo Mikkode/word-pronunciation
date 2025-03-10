@@ -143,11 +143,6 @@ export default function FlashCardCarousel({
           <ChevronRight size={24} />
         </button>
       </div>
-
-      {/* Instructions de swipe */}
-      <div className="text-center text-gray-500 text-sm mt-4">
-        Slide left or right to navigate
-      </div>
     </div>
   );
 }
