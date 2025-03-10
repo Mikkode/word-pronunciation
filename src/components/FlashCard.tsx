@@ -154,7 +154,7 @@ export default function FlashCard({
           className={`absolute inset-0 flex items-center justify-center ${color2} backface-hidden rotate-y-180 rounded-2xl`}
         >
           <div className="p-4 h-full w-full flex flex-col items-center justify-center">
-            <h2 className="text-4xl font-bold text-center font-kg-red-hands">
+            <h2 className="text-4xl font-bold text-center font-kg-red-hands text-black">
               {text}
             </h2>
           </div>
