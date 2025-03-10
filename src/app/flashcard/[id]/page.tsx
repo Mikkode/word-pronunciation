@@ -64,9 +64,9 @@ export default function CategoryPage({
 
       {/* Barre de navigation avec fond blanc transparent */}
       <div className="sticky top-0 z-10 bg-white/0 backdrop-blur-xl p-2 rounded-xl shadow-md mb-6 border border-white/50">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
           {/* Groupe gauche: bouton retour et titre */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
             <button
               onClick={handleBackClick}
               className="bg-[#ff56ac] hover:bg-[#ff3d9a] text-white w-9 h-9 rounded-full flex items-center justify-center shadow-sm hover:shadow transition-all cursor-pointer"
@@ -81,7 +81,7 @@ export default function CategoryPage({
           </div>
 
           {/* Groupe droite: tous les contrôles */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
             {/* Sélecteur de mode */}
             <FlashCardModeSelector
               currentMode={flashcardMode}
