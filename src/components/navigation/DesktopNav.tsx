@@ -8,7 +8,7 @@ interface DesktopNavProps {
 
 export default function DesktopNav({ pathname }: DesktopNavProps) {
   return (
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center space-x-4 ">
       <div className="flex space-x-4">
         {navLinks.map((link, index) => (
           <Link

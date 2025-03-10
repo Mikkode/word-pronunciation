@@ -9,8 +9,12 @@ import ThemeProvider from "@/components/ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "WordNest - Learn Languages with Fun",
+  title: "Paper Rings - Learn Languages with Fun",
   description: "A fun and interactive way to learn new languages",
+  icons: {
+    icon: "/logo.svg",
+    apple: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
