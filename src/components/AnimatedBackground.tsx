@@ -17,12 +17,8 @@ export default function AnimatedBackground({
 }: AnimatedBackgroundProps) {
   // Utiliser le contexte de thème
   let { currentMode } = { currentMode: "night" };
-  try {
-    const themeContext = useTheme();
-    currentMode = themeContext.currentMode;
-  } catch (e) {
-    // Si le contexte n'est pas disponible, utiliser la valeur par défaut
-  }
+  const themeContext = useTheme();
+  currentMode = themeContext.currentMode;
 
   // Utiliser le mode forcé s'il est spécifié, sinon utiliser le mode du thème
   const effectiveMode = forceMode === "auto" ? currentMode : forceMode;
