@@ -4,7 +4,7 @@ import Content from "@/components/Content";
 export default function AboutPage() {
   return (
     <div>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto text-gray-800">
         <ColorfulText
           text="About Us"
           className="text-6xl font-extrabold mb-8 text-center font-kg-red-hands"
@@ -15,7 +15,7 @@ export default function AboutPage() {
             Why Paper Rings ?
           </h3>
 
-          <div className="space-y-6">
+          <div className="space-y-6 ">
             <p className="text-lg">
               The name &#34;Paper Rings&#34; is inspired by the idea of creating
               links:
