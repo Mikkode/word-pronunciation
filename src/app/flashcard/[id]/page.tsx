@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { use } from "react";
 import { Grid, Layers } from "lucide-react";
@@ -11,6 +11,7 @@ import FlashCardCarousel from "@/components/FlashCardCarousel";
 import FlashCardModeSelector from "@/components/FlashCardModeSelector";
 import PurposeTooltip from "@/components/PurposeTooltip";
 import Timer from "@/components/Timer";
+import FullScreenButton from "@/components/FullScreenButton";
 import { getWordsByCategory } from "@/data";
 import { categories } from "@/data";
 import { CardMode } from "@/components/FlashCard";
@@ -25,6 +26,7 @@ export default function CategoryPage({
   const [flashcardMode, setFlashcardMode] =
     useState<CardMode>("image-to-sound");
   const [viewMode, setViewMode] = useState<"grid" | "carousel">("carousel");
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const wordsForCategory = getWordsByCategory(id);
 
@@ -107,6 +109,12 @@ export default function CategoryPage({
               {viewMode === "grid" ? <Layers size={18} /> : <Grid size={18} />}
             </button>
 
+            {/* Bouton plein écran */}
+            <FullScreenButton
+              targetRef={contentRef}
+              className="bg-blue-500 hover:bg-blue-600 text-white w-9 h-9 rounded-full flex items-center justify-center shadow-md border-2 border-black transition-all hover:scale-110 cursor-pointer"
+            />
+
             {/* Bouton d'aide */}
             {currentCategory?.purpose && (
               <PurposeTooltip purpose={currentCategory.purpose} />
@@ -116,7 +124,7 @@ export default function CategoryPage({
       </div>
 
       {wordsForCategory.length > 0 ? (
-        <Content>
+        <Content ref={contentRef}>
           {viewMode === "grid" ? (
             <FlashCardGrid words={wordsForCategory} mode={flashcardMode} />
           ) : (

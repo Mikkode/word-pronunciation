@@ -17,6 +17,7 @@ export default function FlashCardCarousel({
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
   const startXRef = useRef<number | null>(null);
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
   // Couleurs disponibles pour la rotation
   const colors = [
@@ -78,6 +79,34 @@ export default function FlashCardCarousel({
     };
   }, [currentIndex, words.length]);
 
+  // Détecter les changements d'état du mode plein écran
+  useEffect(() => {
+    const handleFullScreenChange = () => {
+      setIsFullScreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener("fullscreenchange", handleFullScreenChange);
+    document.addEventListener("webkitfullscreenchange", handleFullScreenChange);
+    document.addEventListener("mozfullscreenchange", handleFullScreenChange);
+    document.addEventListener("MSFullscreenChange", handleFullScreenChange);
+
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullScreenChange);
+      document.removeEventListener(
+        "webkitfullscreenchange",
+        handleFullScreenChange
+      );
+      document.removeEventListener(
+        "mozfullscreenchange",
+        handleFullScreenChange
+      );
+      document.removeEventListener(
+        "MSFullscreenChange",
+        handleFullScreenChange
+      );
+    };
+  }, []);
+
   const goToPrevious = () => {
     const isFirstCard = currentIndex === 0;
     const newIndex = isFirstCard ? words.length - 1 : currentIndex - 1;
@@ -110,7 +139,11 @@ export default function FlashCardCarousel({
       className="relative w-full h-full flex flex-col items-center justify-center"
       ref={carouselRef}
     >
-      <div className="w-full max-w-md aspect-square mx-auto mb-6">
+      <div
+        className={`w-full ${
+          isFullScreen ? "max-w-2xl" : "max-w-md"
+        } aspect-square mx-auto mb-6`}
+      >
         <FlashCard
           image={words[currentIndex].image}
           text={words[currentIndex].text}
@@ -122,25 +155,37 @@ export default function FlashCardCarousel({
       </div>
 
       {/* Navigation */}
-      <div className="flex justify-between items-center w-full max-w-md px-4">
+      <div
+        className={`flex justify-between items-center w-full ${
+          isFullScreen ? "max-w-2xl" : "max-w-md"
+        } px-4`}
+      >
         <button
           onClick={goToPrevious}
-          className="bg-pink-main hover:bg-pink-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md border-2 border-black transform transition-transform hover:scale-110 cursor-pointer"
+          className={`bg-pink-main hover:bg-pink-600 text-white rounded-full ${
+            isFullScreen ? "w-16 h-16" : "w-12 h-12"
+          } flex items-center justify-center shadow-md border-2 border-black transform transition-transform hover:scale-110 cursor-pointer`}
           aria-label="Previous card"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={isFullScreen ? 32 : 24} />
         </button>
 
-        <div className="text-center font-bold text-[#6454f0]">
+        <div
+          className={`text-center font-bold text-[#6454f0] ${
+            isFullScreen ? "text-2xl" : ""
+          }`}
+        >
           {currentIndex + 1} / {words.length}
         </div>
 
         <button
           onClick={goToNext}
-          className="bg-pink-main hover:bg-pink-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md border-2 border-black transform transition-transform hover:scale-110 cursor-pointer"
+          className={`bg-pink-main hover:bg-pink-600 text-white rounded-full ${
+            isFullScreen ? "w-16 h-16" : "w-12 h-12"
+          } flex items-center justify-center shadow-md border-2 border-black transform transition-transform hover:scale-110 cursor-pointer`}
           aria-label="Next card"
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={isFullScreen ? 32 : 24} />
         </button>
       </div>
     </div>
