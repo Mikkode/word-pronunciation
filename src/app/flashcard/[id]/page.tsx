@@ -56,42 +56,43 @@ export default function CategoryPage({
     <div className="max-w-4xl mx-auto font-kg-red-hands">
       <ColorfulText
         text="Flip Cards"
-        className="text-4xl md:text-5xl font-extrabold mb-6 md:mb-8 text-center "
+        className="text-4xl md:text-5xl font-extrabold mb-6 md:mb-8 text-center"
       />
 
       {/* Timer flottant avec la couleur rose */}
       <Timer color="pink" />
 
-      <div className="sticky top-0 z-10 bg-white/90 backdrop-blur-md p-3 rounded-xl shadow-md mb-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
+      {/* Barre de navigation avec fond blanc transparent */}
+      <div className="sticky top-0 z-10 bg-white/0 backdrop-blur-xl p-2 rounded-xl shadow-md mb-6 border border-white/50">
+        <div className="flex items-center justify-between">
+          {/* Groupe gauche: bouton retour et titre */}
           <div className="flex items-center gap-2">
             <button
               onClick={handleBackClick}
-              className="bg-[#ff56ac] hover:bg-[#ff3d9a] text-white w-10 h-10 rounded-full flex items-center justify-center shadow-sm hover:shadow transition-all cursor-pointer"
+              className="bg-[#ff56ac] hover:bg-[#ff3d9a] text-white w-9 h-9 rounded-full flex items-center justify-center shadow-sm hover:shadow transition-all cursor-pointer"
               aria-label="Back to categories"
             >
               ←
             </button>
 
-            <h2 className="text-xl font-bold bg-gradient-to-r from-[#a057ff] to-[#8a4bff] text-transparent bg-clip-text">
+            <h2 className="text-lg font-bold text-[#8a4bff] truncate max-w-[150px] sm:max-w-none">
               {currentCategory?.name || formatCategoryName(id)}
             </h2>
           </div>
 
+          {/* Groupe droite: tous les contrôles */}
           <div className="flex items-center gap-2">
-            {currentCategory?.purpose && (
-              <PurposeTooltip purpose={currentCategory.purpose} />
-            )}
-
+            {/* Sélecteur de mode */}
             <FlashCardModeSelector
               currentMode={flashcardMode}
               onModeChange={handleModeChange}
+              compact={true}
             />
 
             {/* Bouton de changement grid/carrousel */}
             <button
               onClick={toggleViewMode}
-              className="bg-[#6ee2f5] hover:bg-[#4ad8f0] text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md border-2 border-black transition-all hover:scale-110 cursor-pointer"
+              className="bg-[#6ee2f5] hover:bg-[#4ad8f0] text-white w-9 h-9 rounded-full flex items-center justify-center shadow-md border-2 border-black transition-all hover:scale-110 cursor-pointer"
               aria-label={
                 viewMode === "grid"
                   ? "Switch to carousel view"
@@ -103,8 +104,13 @@ export default function CategoryPage({
                   : "Switch to grid view"
               }
             >
-              {viewMode === "grid" ? <Layers size={20} /> : <Grid size={20} />}
+              {viewMode === "grid" ? <Layers size={18} /> : <Grid size={18} />}
             </button>
+
+            {/* Bouton d'aide */}
+            {currentCategory?.purpose && (
+              <PurposeTooltip purpose={currentCategory.purpose} />
+            )}
           </div>
         </div>
       </div>

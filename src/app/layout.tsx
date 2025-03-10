@@ -29,7 +29,7 @@ export default function RootLayout({
         <AnimatedBackground
           starsCount={200}
           cycleDuration={10}
-          forceMode="day" // Peut être "day", "night" ou "auto"
+          forceMode="night" // Peut être "day", "night" ou "auto"
         />
 
         <main className="relative z-10 pt-16 pl-2 pr-2">{children}</main>

@@ -5,11 +5,16 @@ import { HelpCircle } from "lucide-react";
 
 interface PurposeTooltipProps {
   purpose: string;
+  compact?: boolean;
 }
 
-export default function PurposeTooltip({ purpose }: PurposeTooltipProps) {
+export default function PurposeTooltip({
+  purpose,
+  compact = false,
+}: PurposeTooltipProps) {
   const [isOpen, setIsOpen] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
+  const buttonSize = compact ? "w-9 h-9" : "w-10 h-10";
 
   const toggleTooltip = () => {
     setIsOpen(!isOpen);
@@ -38,10 +43,10 @@ export default function PurposeTooltip({ purpose }: PurposeTooltipProps) {
     <div className="relative inline-block">
       <button
         onClick={toggleTooltip}
-        className="bg-pink-main hover:bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md border-2 border-black transition-all hover:scale-110 cursor-pointer"
+        className={`bg-pink-main hover:bg-pink-600 text-white ${buttonSize} rounded-full flex items-center justify-center shadow-md border-2 border-black transition-all hover:scale-110 cursor-pointer`}
         aria-label="Show purpose"
       >
-        <HelpCircle size={20} />
+        <HelpCircle size={compact ? 18 : 20} />
       </button>
 
       {isOpen && (
