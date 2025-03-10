@@ -14,7 +14,7 @@ export default function Navigation() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full bg-white dark:bg-gray-900 shadow-md py-4 sticky top-0 z-50">
+    <nav className="w-full bg-white/50 dark:bg-gray-900 shadow-md py-4 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
