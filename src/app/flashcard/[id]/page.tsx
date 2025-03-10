@@ -63,7 +63,7 @@ export default function CategoryPage({
       <Timer color="pink" />
 
       {/* Barre de navigation avec fond blanc transparent */}
-      <div className="sticky top-0 z-10 bg-white/0 backdrop-blur-xl p-2 rounded-xl shadow-md mb-6 border border-white/50">
+      <div className="bg-white/0 backdrop-blur-xl p-2 rounded-xl shadow-md mb-6 border border-white/50">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
           {/* Groupe gauche: bouton retour et titre */}
           <div className="flex items-center gap-2 w-full sm:w-auto">
@@ -75,7 +75,7 @@ export default function CategoryPage({
               ←
             </button>
 
-            <h2 className="text-lg font-bold text-[#8a4bff] truncate max-w-[150px] sm:max-w-none">
+            <h2 className="text-lg font-bold text-[#8a4bff] sm:max-w-none">
               {currentCategory?.name || formatCategoryName(id)}
             </h2>
           </div>
