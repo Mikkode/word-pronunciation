@@ -116,7 +116,7 @@ export default function FlashCardCarousel({
       <div className="flex justify-between items-center w-full max-w-md px-4">
         <button
           onClick={goToPrevious}
-          className="bg-pink-main hover:bg-pink-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md border-2 border-black transform transition-transform hover:scale-110"
+          className="bg-pink-main hover:bg-pink-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md border-2 border-black transform transition-transform hover:scale-110 cursor-pointer"
           aria-label="Previous card"
         >
           <ChevronLeft size={24} />
@@ -128,7 +128,7 @@ export default function FlashCardCarousel({
 
         <button
           onClick={goToNext}
-          className="bg-pink-main hover:bg-pink-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md border-2 border-black transform transition-transform hover:scale-110"
+          className="bg-pink-main hover:bg-pink-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md border-2 border-black transform transition-transform hover:scale-110 cursor-pointer"
           aria-label="Next card"
         >
           <ChevronRight size={24} />

@@ -91,7 +91,7 @@ export default function CategoryPage({
             {/* Bouton de changement grid/carrousel */}
             <button
               onClick={toggleViewMode}
-              className="bg-[#6ee2f5] hover:bg-[#4ad8f0] text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md border-2 border-black transition-all hover:scale-110"
+              className="bg-[#6ee2f5] hover:bg-[#4ad8f0] text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md border-2 border-black transition-all hover:scale-110 cursor-pointer"
               aria-label={
                 viewMode === "grid"
                   ? "Switch to carousel view"

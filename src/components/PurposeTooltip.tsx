@@ -38,7 +38,7 @@ export default function PurposeTooltip({ purpose }: PurposeTooltipProps) {
     <div className="relative inline-block">
       <button
         onClick={toggleTooltip}
-        className="bg-pink-main hover:bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md border-2 border-black transition-all hover:scale-110"
+        className="bg-pink-main hover:bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md border-2 border-black transition-all hover:scale-110 cursor-pointer"
         aria-label="Show purpose"
       >
         <HelpCircle size={20} />
