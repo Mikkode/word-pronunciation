@@ -1,74 +1,62 @@
 "use client";
 
 import styles from "./AnimatedBackground.module.css";
-import { useMemo } from "react";
 import { useTheme } from "./ThemeProvider";
 
-type AnimatedBackgroundProps = {
-  starsCount?: number;
-  cycleDuration?: number;
-  forceMode?: "day" | "night" | "auto";
-};
-
-export default function AnimatedBackground({
+// Composant côté serveur qui sera importé par le composant client
+export function AnimatedBackgroundServer({
   starsCount = 12,
   cycleDuration = 60,
-  forceMode = "auto",
-}: AnimatedBackgroundProps) {
-  // Utiliser le contexte de thème
-  let { currentMode } = { currentMode: "night" };
-  const themeContext = useTheme();
-  currentMode = themeContext.currentMode;
+  mode = "night",
+}: {
+  starsCount?: number;
+  cycleDuration?: number;
+  mode: "day" | "night" | "auto";
+}) {
+  // Générer les étoiles de manière statique
+  const stars = Array.from({ length: starsCount }).map((_, i) => {
+    const size = (i % 3) + 1.5; // Utilisation d'un modèle déterministe au lieu de Math.random()
+    const top = (i * 7.3) % 100;
+    const left = (i * 8.7) % 100;
+    const animationDelay = (i * 0.4) % 5;
+    const opacity = 0.3 + (i % 5) * 0.1;
 
-  // Utiliser le mode forcé s'il est spécifié, sinon utiliser le mode du thème
-  const effectiveMode = forceMode === "auto" ? currentMode : forceMode;
-
-  // Générer les étoiles dynamiquement avec des propriétés aléatoires
-  const stars = useMemo(() => {
-    return Array.from({ length: starsCount }).map((_, i) => {
-      const size = Math.random() * 3 + 1;
-      const top = Math.random() * 100;
-      const left = Math.random() * 100;
-      const animationDelay = Math.random() * 5;
-      const opacity = Math.random() * 0.5 + 0.3;
-
-      return (
-        <div
-          key={i}
-          className={styles.star}
-          style={{
-            width: `${size}px`,
-            height: `${size}px`,
-            top: `${top}%`,
-            left: `${left}%`,
-            animationDelay: `${animationDelay}s`,
-            opacity,
-          }}
-        />
-      );
-    });
-  }, [starsCount]);
+    return (
+      <div
+        key={i}
+        className={styles.star}
+        style={{
+          width: `${size}px`,
+          height: `${size}px`,
+          top: `${top}%`,
+          left: `${left}%`,
+          animationDelay: `${animationDelay}s`,
+          opacity,
+        }}
+      />
+    );
+  });
 
   // Style pour la durée du cycle jour/nuit
   const style = {
     "--cycle-duration": `${cycleDuration}s`,
   } as React.CSSProperties;
 
-  // Déterminer les classes CSS en fonction du mode effectif
+  // Déterminer les classes CSS en fonction du mode
   const backgroundClass =
-    effectiveMode === "auto"
+    mode === "auto"
       ? styles.animatedBackground
-      : effectiveMode === "day"
+      : mode === "day"
       ? styles.dayBackground
       : styles.nightBackground;
 
   return (
     <div className={backgroundClass} style={style}>
       {/* Soleil visible uniquement en mode jour ou auto */}
-      {effectiveMode !== "night" && <div className={styles.sun}></div>}
+      {mode !== "night" && <div className={styles.sun}></div>}
 
       {/* Lune et étoiles visibles uniquement en mode nuit ou auto */}
-      {effectiveMode !== "day" && (
+      {mode !== "day" && (
         <>
           <div className={styles.moon}></div>
           {stars}
@@ -82,5 +70,32 @@ export default function AnimatedBackground({
       <div className={`${styles.cloud} ${styles.cloud4}`}></div>
       <div className={`${styles.cloud} ${styles.cloud5}`}></div>
     </div>
+  );
+}
+
+// Composant client qui utilise le composant serveur
+type AnimatedBackgroundProps = {
+  starsCount?: number;
+  cycleDuration?: number;
+  forceMode?: "day" | "night" | "auto";
+};
+
+export default function AnimatedBackground({
+  starsCount = 12,
+  cycleDuration = 60,
+  forceMode = "auto",
+}: AnimatedBackgroundProps) {
+  // Utiliser le contexte de thème
+  const { currentMode } = useTheme();
+
+  // Utiliser le mode forcé s'il est spécifié, sinon utiliser le mode du thème
+  const effectiveMode = forceMode === "auto" ? currentMode : forceMode;
+
+  return (
+    <AnimatedBackgroundServer
+      starsCount={starsCount}
+      cycleDuration={cycleDuration}
+      mode={effectiveMode}
+    />
   );
 }
