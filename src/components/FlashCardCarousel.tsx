@@ -18,6 +18,14 @@ export default function FlashCardCarousel({
   const carouselRef = useRef<HTMLDivElement>(null);
   const startXRef = useRef<number | null>(null);
 
+  // Couleurs disponibles pour la rotation
+  const colors = [
+    "bg-pink-main",
+    "bg-blue-main",
+    "bg-purple-main",
+    "bg-orange-main",
+  ];
+
   // Gestion du défilement tactile pour le carrousel
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -109,6 +117,7 @@ export default function FlashCardCarousel({
           title={words[currentIndex].text}
           mode={mode}
           lang={words[currentIndex].lang}
+          color1={colors[currentIndex % colors.length]}
         />
       </div>
 

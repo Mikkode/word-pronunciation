@@ -17,6 +17,14 @@ export default function FlashCardGrid({ words, mode }: FlashCardGridProps) {
     setSelectedCardId(null);
   }, [words]);
 
+  // Couleurs disponibles pour la rotation
+  const colors = [
+    "bg-pink-main",
+    "bg-blue-main",
+    "bg-purple-main",
+    "bg-orange-main",
+  ];
+
   if (!words || words.length === 0) {
     return (
       <div className="w-full h-64 flex items-center justify-center">
@@ -36,7 +44,7 @@ export default function FlashCardGrid({ words, mode }: FlashCardGridProps) {
     <div className="w-full">
       {/* Grille de cartes avec espacement */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-11">
-        {words.map((word) => (
+        {words.map((word, index) => (
           <div key={word.id} className="w-full aspect-square">
             <FlashCard
               image={word.image}
@@ -46,6 +54,7 @@ export default function FlashCardGrid({ words, mode }: FlashCardGridProps) {
               lang={word.lang}
               isActive={word.id === selectedCardId}
               className="h-full w-full"
+              color1={colors[index % colors.length]}
             />
           </div>
         ))}
