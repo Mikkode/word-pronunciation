@@ -6,6 +6,7 @@ import { Menu } from "lucide-react";
 import ColorfulText from "./ColorfulText";
 import { usePathname } from "next/navigation";
 import styles from "./Navigation.module.css";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,6 +65,9 @@ export default function Navigation() {
                 )}
               </Link>
             ))}
+
+            {/* Bouton de thème */}
+            <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
@@ -99,6 +103,11 @@ export default function Navigation() {
                 )}
               </Link>
             ))}
+
+            {/* Bouton de thème dans le menu mobile */}
+            <div className="mt-2">
+              <ThemeToggle />
+            </div>
           </div>
         )}
       </div>
